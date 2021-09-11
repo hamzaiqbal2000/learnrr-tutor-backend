@@ -1,3 +1,5 @@
+const Joi = require("joi");
+const PasswordComplexity = require("joi-password-complexity");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { Student } = require("../models/student");
@@ -18,7 +20,7 @@ router.post("/", async (req, res) => {
   );
   if (!validPassword) return res.status(400).send("Invalid email or password");
 
-  const token = tutorUser.generateAuthToken();
+  const token = student.generateAuthToken();
   res.send(token);
 });
 

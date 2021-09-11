@@ -52,10 +52,7 @@ const tutorSchema = new mongoose.Schema({
   //availablity
   availability: [
     {
-      type: new mongoose.Schema({
-        day: String,
-        timming: Date,
-      }),
+      type: String,
       required: true,
     },
   ],
@@ -69,7 +66,7 @@ function validatetutor(tutor) {
     subjectId: Joi.string().required(),
     tutorProfileId: Joi.objectId().required(),
     hourlyRate: Joi.number().required(),
-    availability: Joi.objectId().required(),
+    availability: Joi.string().required(),
   };
 
   return Joi.validate(tutor, schema);

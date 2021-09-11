@@ -36,60 +36,59 @@ router.post("/", studentAuth, async (req, res) => {
     return res.status(404).send("Invalid tutor");
   }
 
-  //tutorUser
-  const tutorUser = await TutorUser.findById(req.body.tutorUserId);
-  if (!tutorUser) {
-    return res.status(404).send("Invalid tutorUser");
-  }
+  // //tutorUser
+  // const tutorUser = await TutorUser.findById(req.body.tutorUserId);
+  // if (!tutorUser) {
+  //   return res.status(404).send("Invalid tutorUser");
+  // }
 
-  //subject
-  const subject = await Subject.findById(req.body.subjectId);
-  if (!subject) {
-    return res.status(404).send("Invalid Subject");
-  }
+  // //subject
+  // const subject = await Subject.findById(req.body.subjectId);
+  // if (!subject) {
+  //   return res.status(404).send("Invalid Subject");
+  // }
 
-  //tutorProfile
+  // //tutorProfile
 
-  const tutorProfile = await TutorProfile.findById(req.body.tutorProfileId);
-  if (!tutorProfile) {
-    return res.status(404).send("Invalid tutorProfile");
-  }
+  // const tutorProfile = await TutorProfile.findById(req.body.tutorProfileId);
+  // if (!tutorProfile) {
+  //   return res.status(404).send("Invalid tutorProfile");
+  // }
 
   //create a new booking
   let booking = new Booking({
     // student
     student: {
       _id: student._id,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      phone: req.body.phone,
-      email: req.body.email,
+      firstname: student.firstname,
+      lastname: student.lastname,
+      email: student.email,
     },
     // tutor
     tutor: {
       _id: tutor._id,
-      // tutorUser
-      tutorUser: {
-        _id: tutorUser._id,
-        firstname: tutorUser.firstname,
-        lastname: tutorUser.lastname,
-        email: tutorUser.email,
-      },
-      // subject
-      subject: {
-        _id: subject._id,
-        name: subject.name,
-      },
+      //   //tutorUser
+      //   tutorUser: {
+      //     _id: tutorUser._id,
+      //     firstname: tutorUser.firstname,
+      //     lastname: tutorUser.lastname,
+      //     email: tutorUser.email,
+      //   },
+      //   // subject
+      //   subject: {
+      //     _id: subject._id,
+      //     name: subject.name,
+      //   },
       // hourlyRate
-      hourlyRate: req.body.hourlyRate,
-      // tutorProfile
-      tutorProfile: {
-        _id: tutorProfile._id,
-        headline: tutorProfile.headline,
-        description: tutorProfile.description,
-      },
+      hourlyRate: tutor.hourlyRate,
+      //   // tutorProfile
+      //   tutorProfile: {
+      //     _id: tutorProfile._id,
+      //     headline: tutorProfile.headline,
+      //     description: tutorProfile.description,
+      //   },
       // availability
-      availability: req.body.availability,
+      availability: tutor.availability,
     },
     // rentalfee
     rentalfee: req.body.rentalfee,

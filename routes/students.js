@@ -26,12 +26,12 @@ router.post("/", async (req, res) => {
     _.pick(req.body, ["_id", "firstname", "lastname", "email", "password"])
   );
 
-  const salt = bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(10);
   student.password = await bcrypt.hash(student.password, salt);
 
   await student.save();
 
-  const token = tutorUser.generateAuthToken();
+  const token = student.generateAuthToken();
   res
     .header("x-auth-token", token)
     .send(_.pick(student, ["_id", "firstname", "lastname", "email"]));

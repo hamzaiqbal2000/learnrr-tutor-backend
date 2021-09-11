@@ -43,7 +43,7 @@ const Request = mongoose.model("Request", requestSchema);
 function validateRequest(request) {
   const schema = {
     studentId: Joi.objectId().required(),
-    subjectId: Joi.string().required(),
+    subjectId: Joi.objectId().required(),
     description: Joi.string().required(),
   };
 

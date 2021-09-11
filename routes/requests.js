@@ -16,7 +16,7 @@ router.get("/:id", async (req, res) => {
   res.send(request);
 });
 
-router.post("/:id", studentAuth, async (req, res) => {
+router.post("/", studentAuth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -35,14 +35,14 @@ router.post("/:id", studentAuth, async (req, res) => {
     // student
     student: {
       _id: student._id,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
+      firstname: student.firstname,
+      lastname: student.lastname,
+      email: student.email,
     },
     // subject
     subject: {
       _id: subject._id,
-      name: req.body.name,
+      name: subject.name,
     },
     // description
     description: req.body.description,
@@ -74,14 +74,14 @@ router.put("/:id", studentAuth, async (req, res) => {
       // student
       student: {
         _id: student._id,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
+        firstname: student.firstname,
+        lastname: student.lastname,
+        email: student.email,
       },
       // subject
       subject: {
         _id: subject._id,
-        name: req.body.name,
+        name: subject.name,
       },
       // description
       description: req.body.description,

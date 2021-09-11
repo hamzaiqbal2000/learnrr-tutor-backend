@@ -19,12 +19,12 @@ const studentSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50,
   },
-  phone: {
-    type: Number,
-    required: true,
-    minlength: 11,
-    maxlength: 11,
-  },
+  // phone: {
+  //   type: Number,
+  //   required: true,
+  //   minlength: 11,
+  //   maxlength: 11,
+  // },
   email: {
     type: String,
     unique: true,
@@ -53,7 +53,7 @@ function validateStudent(student) {
   const schema = {
     firstname: Joi.string().min(3).max(50).required(),
     lastname: Joi.string().min(3).max(50).required(),
-    phone: Joi.number().min(11).max(11).required(),
+    //phone: Joi.number().min(11).max(11).required(),
     email: Joi.string().min(5).max(255).required().email(),
     password: new PasswordComplexity({
       min: 8,

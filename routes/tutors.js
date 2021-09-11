@@ -47,7 +47,7 @@ router.post("/", auth, async (req, res) => {
   }
 
   //create a new tutor
-  let tutor = new tutor({
+  let tutor = new Tutor({
     // tutorUser
     tutorUser: {
       _id: tutorUser._id,
